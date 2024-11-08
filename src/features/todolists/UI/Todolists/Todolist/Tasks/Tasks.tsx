@@ -16,9 +16,9 @@ const Tasks = ({ todolist }: Props) => {
   const { id, filter } = todolist;
   const dispatch = useAppDispatch();
   const tasks = useAppSelector(selectTasks)[id];
-  useEffect(() => {
-    dispatch(fetchTasksTC(id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchTasksTC(id));
+  // }, []);
 
   let tasksForTodolist = tasks;
   if (filter === "active") {

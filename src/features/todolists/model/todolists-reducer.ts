@@ -4,6 +4,7 @@ import { AppDispatch, AppThunk } from "app/store";
 import { RequestStatus, setAppStatusAC, setErrorAC } from "app/app-reducer";
 import { ResultCode } from "../lib/enums";
 import { handleNetworkError, handleServerError } from "common/utils";
+import { fetchTasksTC } from "./tasks-reducer";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
@@ -43,6 +44,9 @@ export const todolistsReducer = (
     case "CHANGE_TODOLIST_ENTITY_STATUS": {
       const todolistId = action.payload.id;
       return state.map((el) => (el.id === todolistId ? { ...el, entityStatus: action.payload.entityStatus } : el));
+    }
+    case "CLEAR_TODO": {
+      return [];
     }
 
     default:
@@ -92,6 +96,11 @@ export const changeTodolistEntityStatusAC = (payload: { id: string; entityStatus
     payload,
   } as const;
 };
+export const clearTodoAC = () => {
+  return {
+    type: "CLEAR_TODO",
+  } as const;
+};
 
 //Thunk creators
 
@@ -102,6 +111,13 @@ export const fetchTodolistsTC = (): AppThunk => (dispatch: AppDispatch) => {
     .then((res) => {
       dispatch(setAppStatusAC("succeeded"));
       dispatch(setTodolistsAC(res.data));
+      return res.data;
+    })
+    .then((todos) => {
+      console.log(todos);
+      todos.forEach((tl) => {
+        dispatch(fetchTasksTC(tl.id));
+      });
     })
     .catch((err) => {
       handleNetworkError(dispatch, err);
@@ -167,6 +183,7 @@ export type ChangeTodolistTitleActionType = ReturnType<typeof changeTodolistTitl
 export type ChangeTodolistFilterActionType = ReturnType<typeof changeTodolistFilterAC>;
 export type SetTodolistsActionType = ReturnType<typeof setTodolistsAC>;
 export type ChangeTodolistEntityStatusctionType = ReturnType<typeof changeTodolistEntityStatusAC>;
+export type ClearTodoType = ReturnType<typeof clearTodoAC>;
 
 export type TodolistsActionsType =
   | RemoveTodolistActionType
@@ -174,4 +191,5 @@ export type TodolistsActionsType =
   | ChangeTodolistTitleActionType
   | ChangeTodolistFilterActionType
   | SetTodolistsActionType
-  | ChangeTodolistEntityStatusctionType;
+  | ChangeTodolistEntityStatusctionType
+  | ClearTodoType;
