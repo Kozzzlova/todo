@@ -6,13 +6,13 @@ import IconButton from "@mui/material/IconButton";
 import { MenuButton } from "common/components";
 import Switch from "@mui/material/Switch";
 import { getTheme } from "common";
-import { switchThemeAC } from "app/app-reducer";
+import { switchTheme } from "app/appSlice";
 import { useAppDispatch } from "common";
 import { useAppSelector } from "common";
-import { selectStatus, selectTheme } from "app/appSelectors";
+import { selectStatus, selectTheme } from "app/appSlice";
 import LinearProgress from "@mui/material/LinearProgress/LinearProgress";
 import { selectIsLoggedIn } from "features/auth/model/authSelector";
-import { logoutTC } from "features/auth/model/auth-Reducer";
+import { logoutTC } from "features/auth/model/authSlice";
 
 export const Header = () => {
   const themeMode = useAppSelector(selectTheme);
@@ -22,7 +22,7 @@ export const Header = () => {
   const appStatus = useAppSelector(selectStatus);
 
   const changeModeHandler = () => {
-    dispatch(switchThemeAC(themeMode === "light" ? "dark" : "light"));
+    dispatch(switchTheme({ themeMode: themeMode === "light" ? "dark" : "light" }));
   };
   const logoutHandler = () => {
     dispatch(logoutTC());

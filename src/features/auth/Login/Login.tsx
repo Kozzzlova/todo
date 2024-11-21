@@ -6,11 +6,11 @@ import FormGroup from "@mui/material/FormGroup";
 import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import { selectTheme } from "app/appSelectors";
+import { selectTheme } from "app/appSlice";
 import { getTheme, useAppDispatch, useAppSelector } from "common/index";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import s from "./Login.module.css";
-import { loginTC } from "../model/auth-Reducer";
+import { loginTC } from "../model/authSlice";
 import { selectIsLoggedIn } from "../model/authSelector";
 import { Navigate } from "react-router-dom";
 

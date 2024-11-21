@@ -1,7 +1,7 @@
 import { Response } from "common";
 import { GetTaskResponse, DomainTask, UpdateTaskModel } from "./tasksApi.types";
 import { instance } from "common";
-import { UpdateTaskDomainModel } from "../model/tasks-reducer";
+import { UpdateTaskDomainModel } from "../model/tasksSlice";
 
 export const tasksApi = {
   getTasks(todolistId: string) {

@@ -2,7 +2,7 @@ import { EditableSpan } from "common/components/EditableSpan/EditableSpan";
 import IconButton from "@mui/material/IconButton/IconButton";
 import styles from "./TodolistTitle.module.css";
 import { useAppDispatch } from "common";
-import { DomainTodolist, removeTodolistTC, updateTodolistTitleTC } from "features/todolists/model/todolists-reducer";
+import { DomainTodolist, removeTodolistTC, updateTodolistTitleTC } from "features/todolists/model/todolistsSlice";
 
 type Props = {
   todolist: DomainTodolist;

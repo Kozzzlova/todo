@@ -3,9 +3,9 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper/Paper";
 import { Todolist } from "./Todolist/Todolist";
 import { useAppSelector } from "common/hooks/useAppSelector";
-import { selectTodolists } from "features/todolists/model/todolistsSelectors";
+import { selectTodolists } from "features/todolists/model/todolistsSlice";
 import { useAppDispatch } from "common/index";
-import { fetchTodolistsTC } from "features/todolists/model/todolists-reducer";
+import { fetchTodolistsTC } from "features/todolists/model/todolistsSlice";
 
 const Todolists = () => {
   const todolists = useAppSelector(selectTodolists);

@@ -3,8 +3,8 @@ import Tasks from "./Tasks/Tasks";
 import TodolistTItle from "./TodolistTitle/TodolistTItle";
 import FilterTasksButtons from "./FilterTasksButtons/FilterTasksButtons";
 import { useAppDispatch } from "common/hooks/useAppDispatch";
-import { addTaskTC } from "features/todolists/model/tasks-reducer";
-import { DomainTodolist } from "features/todolists/model/todolists-reducer";
+import { addTaskTC } from "features/todolists/model/tasksSlice";
+import { DomainTodolist } from "features/todolists/model/todolistsSlice";
 
 type PropsType = {
   todolist: DomainTodolist;

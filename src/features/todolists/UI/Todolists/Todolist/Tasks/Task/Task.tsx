@@ -5,11 +5,11 @@ import { Checkbox } from "@mui/material";
 import { ChangeEvent } from "react";
 import { EditableSpan } from "common/components";
 import { useAppDispatch } from "common/hooks/useAppDispatch";
-import { removeTaskTC, updateTaskTC } from "features/todolists/model/tasks-reducer";
-import { DomainTodolist } from "features/todolists/model/todolists-reducer";
+import { removeTaskTC, updateTaskTC } from "features/todolists/model/tasksSlice";
+import { DomainTodolist } from "features/todolists/model/todolistsSlice";
 import { DomainTask } from "features/todolists/api/tasksApi.types";
 import { TaskStatus } from "features/todolists/lib/enums/enums";
-import { RequestStatus } from "app/app-reducer";
+import { RequestStatus } from "app/appSlice";
 
 type Props = {
   task: DomainTask & { entityStatus: RequestStatus };
